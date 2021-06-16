@@ -1,0 +1,48 @@
+<configuration debug="false" scan="false" scanPeriod="300 seconds">
+
+	<springProperty scope="context" name="appname" source="appname" />
+	<property name="basedir" value="/usr/log/applog" />
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="com.llpay.framework.autoconfigure.logging.logback.SecurePatternLayoutEncoder">
+			<encrypt>false</encrypt>
+	        <encryptKeys>password repassword validCode verifyCode phone mb_send tno_smscd telephone certNo idCard salaryCardNo name_bank name_trader certName staffName acctName cardNo receiverNo fullName legalName legalCertNo realPartner realPartnerCertNo contactPerson|01 employerContactName employerContactPhone contact_mobile contact_name no_idcard uco_name uco_idno receiver contactName contactMob name idNo frms_phone_no frms_user_login frms_user_name frms_user_idno frms_bank_card_no</encryptKeys>
+	        <partialEncryptKeys>password|00 repassword|00 validCode|11 verifyCode|11 phone|34 mb_send|34 tno_smscd|34 telephone|34 certNo|64 idCard|64 salaryCardNo|64 name_bank|01 name_trader|01 certName|01 staffName|01 acctName|01 cardNo|64 receiverNo|34 fullName|01 legalName|01 legalCertNo|64 realPartner|01 realPartnerCertNo|64 contactPerson|01 employerContactName|01 employerContactPhone|64 contact_mobile|34 contact_name|01 no_idcard|64 uco_name|01 uco_idno|64 receiver|01 contactName|01 contactMob|64 name|01 idNo|64 frms_phone_no|34 frms_user_login|34 frms_user_name|01 frms_user_idno|64 frms_bank_card_no|64</partialEncryptKeys>
+	        <pattern>%d %-5p %t [%c] - %m%n</pattern> 
+	        <charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<appender name="CommonDefaultAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${basedir}/${appname}.log</file>
+		<append>true</append>
+		<encoder class="com.llpay.framework.autoconfigure.logging.logback.SecurePatternLayoutEncoder">
+			<encrypt>true</encrypt>
+	        <encryptKeys>password repassword validCode verifyCode phone mb_send tno_smscd telephone certNo idCard salaryCardNo name_bank name_trader certName staffName acctName cardNo receiverNo fullName legalName legalCertNo realPartner realPartnerCertNo contactPerson|01 employerContactName employerContactPhone contact_mobile contact_name no_idcard uco_name uco_idno receiver contactName contactMob name idNo frms_phone_no frms_user_login frms_user_name frms_user_idno frms_bank_card_no account</encryptKeys>
+	        <partialEncryptKeys>password|00 repassword|00 validCode|11 verifyCode|11 phone|34 mb_send|34 tno_smscd|34 telephone|34 certNo|64 idCard|64 salaryCardNo|64 name_bank|01 name_trader|01 certName|01 staffName|01 acctName|01 cardNo|64 receiverNo|34 fullName|01 legalName|01 legalCertNo|64 realPartner|01 realPartnerCertNo|64 contactPerson|01 employerContactName|01 employerContactPhone|64 contact_mobile|34 contact_name|01 no_idcard|64 uco_name|01 uco_idno|64 receiver|01 contactName|01 contactMob|64 name|01 idNo|64 frms_phone_no|34 frms_user_login|34 frms_user_name|01 frms_user_idno|64 frms_bank_card_no|64 account|34</partialEncryptKeys>
+	        <pattern>%d %-5p %t [%c] - %m%n</pattern> 
+	        <charset>UTF-8</charset>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${basedir}/${appname}-default-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<maxFileSize>150MB</maxFileSize>
+		</rollingPolicy>
+	</appender>
+
+	
+	<springProfile name="qa">
+		<logger name="org.springframework" level="ERROR" />
+		<root level="DEBUG">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="CommonDefaultAppender"/>
+		</root>
+	</springProfile>
+	
+	<springProfile name="!dev">
+		<logger name="org.springframework" level="ERROR" />
+		<root level="INFO">
+			<appender-ref ref="CommonDefaultAppender"/>
+		</root>
+	</springProfile>
+</configuration>

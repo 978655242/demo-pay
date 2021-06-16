@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lianlianpay.mpay.busidemo.dao.mapper.TbTraderOpenApplyDOMapper">
+  <resultMap id="BaseResultMap" type="com.lianlianpay.mpay.busidemo.dao.model.TbTraderOpenApplyDO">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="apply_id" jdbcType="VARCHAR" property="applyId" />
+    <result column="oid_partner" jdbcType="VARCHAR" property="oidPartner" />
+    <result column="apply_serial_id" jdbcType="VARCHAR" property="applySerialId" />
+    <result column="entrust_id" jdbcType="VARCHAR" property="entrustId" />
+    <result column="trader_name" jdbcType="VARCHAR" property="traderName" />
+    <result column="bank_chnl" jdbcType="VARCHAR" property="bankChnl" />
+    <result column="bank_customer_id" jdbcType="VARCHAR" property="bankCustomerId" />
+    <result column="bank_chnl_name" jdbcType="VARCHAR" property="bankChnlName" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+    <result column="finance_name" jdbcType="VARCHAR" property="financeName" />
+    <result column="finance_id_type" jdbcType="VARCHAR" property="financeIdType" />
+    <result column="finance_id_no" jdbcType="VARCHAR" property="financeIdNo" />
+    <result column="finance_exp_start" jdbcType="VARCHAR" property="financeExpStart" />
+    <result column="finance_exp_end" jdbcType="VARCHAR" property="financeExpEnd" />
+    <result column="finance_mobile" jdbcType="VARCHAR" property="financeMobile" />
+    <result column="com_expire_start" jdbcType="VARCHAR" property="comExpireStart" />
+    <result column="legal_expire_start" jdbcType="VARCHAR" property="legalExpireStart" />
+    <result column="bank_contract_file" jdbcType="VARCHAR" property="bankContractFile" />
+    <result column="auth_contract_file" jdbcType="VARCHAR" property="authContractFile" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="register_json" jdbcType="LONGVARCHAR" property="registerJson" />
+    <result column="ext" jdbcType="LONGVARCHAR" property="ext" />
+  </resultMap>
+</mapper>

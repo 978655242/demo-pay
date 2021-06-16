@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lianlianpay.mpay.busidemo.dao.mapper.TbTraderChnlConfigDOMapper">
+  <resultMap id="BaseResultMap" type="com.lianlianpay.mpay.busidemo.dao.model.TbTraderChnlConfigDO">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="oid_partner" jdbcType="VARCHAR" property="oidPartner" />
+    <id column="bank_chnl" jdbcType="VARCHAR" property="bankChnl" />
+    <result column="bank_customer_id" jdbcType="VARCHAR" property="bankCustomerId" />
+    <result column="bank_chnl_name" jdbcType="VARCHAR" property="bankChnlName" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+    <result column="bank_contract_file" jdbcType="VARCHAR" property="bankContractFile" />
+    <result column="auth_contract_file" jdbcType="VARCHAR" property="authContractFile" />
+    <result column="limit_balance" jdbcType="BIGINT" property="limitBalance" />
+    <result column="single_max_recharge" jdbcType="BIGINT" property="singleMaxRecharge" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>
