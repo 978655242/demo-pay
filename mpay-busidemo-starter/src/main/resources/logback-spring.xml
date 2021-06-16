@@ -1,48 +1,72 @@
 <configuration debug="false" scan="false" scanPeriod="300 seconds">
 
-	<springProperty scope="context" name="appname" source="appname" />
-	<property name="basedir" value="/usr/log/applog" />
-	
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder class="com.llpay.framework.autoconfigure.logging.logback.SecurePatternLayoutEncoder">
-			<encrypt>false</encrypt>
-	        <encryptKeys>password repassword validCode verifyCode phone mb_send tno_smscd telephone certNo idCard salaryCardNo name_bank name_trader certName staffName acctName cardNo receiverNo fullName legalName legalCertNo realPartner realPartnerCertNo contactPerson|01 employerContactName employerContactPhone contact_mobile contact_name no_idcard uco_name uco_idno receiver contactName contactMob name idNo frms_phone_no frms_user_login frms_user_name frms_user_idno frms_bank_card_no</encryptKeys>
-	        <partialEncryptKeys>password|00 repassword|00 validCode|11 verifyCode|11 phone|34 mb_send|34 tno_smscd|34 telephone|34 certNo|64 idCard|64 salaryCardNo|64 name_bank|01 name_trader|01 certName|01 staffName|01 acctName|01 cardNo|64 receiverNo|34 fullName|01 legalName|01 legalCertNo|64 realPartner|01 realPartnerCertNo|64 contactPerson|01 employerContactName|01 employerContactPhone|64 contact_mobile|34 contact_name|01 no_idcard|64 uco_name|01 uco_idno|64 receiver|01 contactName|01 contactMob|64 name|01 idNo|64 frms_phone_no|34 frms_user_login|34 frms_user_name|01 frms_user_idno|64 frms_bank_card_no|64</partialEncryptKeys>
-	        <pattern>%d %-5p %t [%c] - %m%n</pattern> 
-	        <charset>UTF-8</charset>
-		</encoder>
-	</appender>
-	
-	<appender name="CommonDefaultAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${basedir}/${appname}.log</file>
-		<append>true</append>
-		<encoder class="com.llpay.framework.autoconfigure.logging.logback.SecurePatternLayoutEncoder">
-			<encrypt>true</encrypt>
-	        <encryptKeys>password repassword validCode verifyCode phone mb_send tno_smscd telephone certNo idCard salaryCardNo name_bank name_trader certName staffName acctName cardNo receiverNo fullName legalName legalCertNo realPartner realPartnerCertNo contactPerson|01 employerContactName employerContactPhone contact_mobile contact_name no_idcard uco_name uco_idno receiver contactName contactMob name idNo frms_phone_no frms_user_login frms_user_name frms_user_idno frms_bank_card_no account</encryptKeys>
-	        <partialEncryptKeys>password|00 repassword|00 validCode|11 verifyCode|11 phone|34 mb_send|34 tno_smscd|34 telephone|34 certNo|64 idCard|64 salaryCardNo|64 name_bank|01 name_trader|01 certName|01 staffName|01 acctName|01 cardNo|64 receiverNo|34 fullName|01 legalName|01 legalCertNo|64 realPartner|01 realPartnerCertNo|64 contactPerson|01 employerContactName|01 employerContactPhone|64 contact_mobile|34 contact_name|01 no_idcard|64 uco_name|01 uco_idno|64 receiver|01 contactName|01 contactMob|64 name|01 idNo|64 frms_phone_no|34 frms_user_login|34 frms_user_name|01 frms_user_idno|64 frms_bank_card_no|64 account|34</partialEncryptKeys>
-	        <pattern>%d %-5p %t [%c] - %m%n</pattern> 
-	        <charset>UTF-8</charset>
-		</encoder>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${basedir}/${appname}-default-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-			<maxHistory>30</maxHistory>
-			<maxFileSize>150MB</maxFileSize>
-		</rollingPolicy>
-	</appender>
+    <!-- 日志文件名 -->
+    <springProperty scope="context" name="appname" source="appname"/>
+    <!-- 日志文件目录 -->
+    <property name="basedir" value="/usr/log/applog"/>
+    <!-- 日志脱敏KEY -->
+    <property name="encryptKeys"
+              value="cvv2 validate cardno cardNumber bankacct acct_bank name_cust"/>
+    <!-- 日志脱敏规则 -->
+    <property name="partialEncryptKeys"
+              value="cvv2|00 validate|00 cardno|64 cardNumber|64 bankacct|64 acct_bank|64 name_cust|01"/>
 
-	
-	<springProfile name="qa">
-		<logger name="org.springframework" level="ERROR" />
-		<root level="DEBUG">
-			<appender-ref ref="STDOUT" />
-			<appender-ref ref="CommonDefaultAppender"/>
-		</root>
-	</springProfile>
-	
+	<!-- 控制台Appender -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="com.llpay.framework.autoconfigure.logging.logback.SecurePatternLayoutEncoder">
+            <encrypt>true</encrypt>
+            <encryptKeys>${encryptKeys}</encryptKeys>
+            <partialEncryptKeys>${partialEncryptKeys}</partialEncryptKeys>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%tid] [%F:%L] %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 同步日志Appender -->
+    <appender name="CommonLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${basedir}/${appname}.log</file>
+        <append>true</append>
+        <encoder class="com.llpay.framework.autoconfigure.logging.logback.SecurePatternLayoutEncoder">
+            <encrypt>true</encrypt>
+            <encryptKeys>${encryptKeys}</encryptKeys>
+            <partialEncryptKeys>${partialEncryptKeys}</partialEncryptKeys>
+            <!-- p:日志级别，tid:调用链跟踪号，F:类名，L:行号，m:消息体，n:换行 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%tid] [%F:%L] %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${basedir}/${appname}.log.%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <maxFileSize>150MB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 异步日志Appender，logback-1.0.11以上支持 -->
+    <appender name="AsyncLogAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 0为不丢失日志,默认20如果队列的80%已满,则会丢弃TRACE、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>10</discardingThreshold>
+       <!-- 异步队列长度，假设IO处理30/s，qps:日志条数=1:10，压测值500，
+            queueSize的设置公式：10*500/30=167，值取2N次幂 -->
+        <queueSize>1024</queueSize>
+		<!-- 异步日志打印栈堆信息 -->
+        <includeCallerData>true</includeCallerData>
+        <!-- 引用 CommonLogAppender -->
+        <appender-ref ref="CommonLogAppender"/>
+    </appender>
+
+    <logger name="com.alibaba.dubbo" level="WARN" />
+    <logger name="org.springframework" level="WARN"/>
+	<logger name="com.ctrip" level="WARN"/>
+
+	<springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
 	<springProfile name="!dev">
-		<logger name="org.springframework" level="ERROR" />
 		<root level="INFO">
-			<appender-ref ref="CommonDefaultAppender"/>
+			<appender-ref ref="CommonLogAppender"/>
 		</root>
 	</springProfile>
+
 </configuration>
