@@ -71,6 +71,10 @@
                     <artifactId>mpay-common</artifactId>
                     <groupId>com.lianlianpay</groupId>
                 </exclusion>
+                <exclusion>
+                    <groupId>com.lianpay</groupId>
+                    <artifactId>framework-web-starter</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
     </dependencies>

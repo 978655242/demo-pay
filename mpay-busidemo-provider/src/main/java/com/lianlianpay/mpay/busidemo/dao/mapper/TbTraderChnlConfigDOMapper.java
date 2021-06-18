@@ -1,6 +1,22 @@
 package com.lianlianpay.mpay.busidemo.dao.mapper;
 
 import com.lianlianpay.mpay.busidemo.dao.model.TbTraderChnlConfigDO;
-import tk.mybatis.mapper.common.Mapper;
+import com.llpay.framework.autoconfigure.jdbc.tkmapper.Mapper;
+import org.apache.ibatis.annotations.Param;
 
-public interface TbTraderChnlConfigDOMapper extends Mapper<TbTraderChnlConfigDO> {}
+@Mapper
+public interface TbTraderChnlConfigDOMapper {
+
+    int deleteByPrimaryKey(@Param("oidPartner") String oidPartner, @Param("bankChnl") String bankChnl);
+
+    int insert(TbTraderChnlConfigDO record);
+
+    int insertSelective(TbTraderChnlConfigDO record);
+
+    TbTraderChnlConfigDO selectByPrimaryKey(@Param("oidPartner") String oidPartner, @Param("bankChnl") String bankChnl);
+
+    int updateByPrimaryKeySelective(TbTraderChnlConfigDO record);
+
+    int updateByPrimaryKey(TbTraderChnlConfigDO record);
+
+}

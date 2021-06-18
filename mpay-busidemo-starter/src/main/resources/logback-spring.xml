@@ -58,7 +58,7 @@
     <logger name="org.springframework" level="WARN"/>
 	<logger name="com.ctrip" level="WARN"/>
 
-	<springProfile name="dev">
+	<springProfile name="qa">
         <root level="INFO">
             <appender-ref ref="STDOUT"/>
         </root>

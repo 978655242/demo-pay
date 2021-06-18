@@ -31,6 +31,7 @@ import static org.apache.commons.collections.CollectionUtils.isEmpty;
 @Service(interfaceClass = ITraderOpenApplyService.class)
 @Slf4j
 public class TraderOpenApplyServiceImpl implements ITraderOpenApplyService {
+
     @Autowired
     private TbTraderOpenApplyRepository openApplyRepository;
 

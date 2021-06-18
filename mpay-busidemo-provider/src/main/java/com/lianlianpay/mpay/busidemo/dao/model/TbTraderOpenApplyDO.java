@@ -1,135 +1,120 @@
 package com.lianlianpay.mpay.busidemo.dao.model;
 
-import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
-@Data
-@Table(name = "TB_TRADER_OPEN_APPLY")
+/**
+ * 商户开户申请表--日终清零业务
+ */
 public class TbTraderOpenApplyDO {
     /**
      * 申请ID
      */
-    @Id
-    @Column(name = "apply_id")
     private String applyId;
 
     /**
      * 商户号
      */
-    @Column(name = "oid_partner")
     private String oidPartner;
 
     /**
      * 客户注册申请流水ID
      */
-    @Column(name = "apply_serial_id")
     private String applySerialId;
 
     /**
      * 委托授权号
      */
-    @Column(name = "entrust_id")
     private String entrustId;
 
     /**
      * 商户名称
      */
-    @Column(name = "trader_name")
     private String traderName;
 
     /**
      * 银行渠道编码
      */
-    @Column(name = "bank_chnl")
     private String bankChnl;
 
     /**
      * 银行客户编码
      */
-    @Column(name = "bank_customer_id")
     private String bankCustomerId;
 
     /**
      * 银行渠道名称
      */
-    @Column(name = "bank_chnl_name")
     private String bankChnlName;
 
     /**
      * 银行账号
      */
-    @Column(name = "bank_account")
     private String bankAccount;
 
     /**
      * 银行账户名称
      */
-    @Column(name = "bank_account_name")
     private String bankAccountName;
 
     /**
      * 财务名称
      */
-    @Column(name = "finance_name")
     private String financeName;
 
     /**
      * 财务证件类型（0:身份证）
      */
-    @Column(name = "finance_id_type")
     private String financeIdType;
 
     /**
      * 财务证件号
      */
-    @Column(name = "finance_id_no")
     private String financeIdNo;
 
     /**
      * 财务证件起
      */
-    @Column(name = "finance_exp_start")
     private String financeExpStart;
 
     /**
      * 财务证件结束日期
      */
-    @Column(name = "finance_exp_end")
     private String financeExpEnd;
 
     /**
-     * 财务人员手机号
+     * 财务手机号
      */
-    @Column(name = "finance_mobile")
     private String financeMobile;
 
     /**
      * 企业证件开始日期
      */
-    @Column(name = "com_expire_start")
     private String comExpireStart;
 
     /**
      * 法人证件开始日期
      */
-    @Column(name = "legal_expire_start")
     private String legalExpireStart;
 
     /**
      * 银行协议地址
      */
-    @Column(name = "bank_contract_file")
     private String bankContractFile;
 
     /**
      * 合作协议地址
      */
-    @Column(name = "auth_contract_file")
     private String authContractFile;
+
+    /**
+     * 客户注册请求json
+     */
+    private String registerJson;
+
+    /**
+     * 扩展字段
+     */
+    private String ext;
 
     /**
      * 备注
@@ -141,21 +126,215 @@ public class TbTraderOpenApplyDO {
      */
     private String status;
 
-    @Column(name = "create_time")
     private Date createTime;
 
-    @Column(name = "update_time")
     private Date updateTime;
 
-    /**
-     * 客户注册请求json
-     */
-    @Column(name = "register_json")
-    private String registerJson;
+    public String getApplyId() {
+        return applyId;
+    }
 
-    /**
-     * 扩展字段
-     */
-    private String ext;
+    public void setApplyId(String applyId) {
+        this.applyId = applyId;
+    }
 
+    public String getOidPartner() {
+        return oidPartner;
+    }
+
+    public void setOidPartner(String oidPartner) {
+        this.oidPartner = oidPartner;
+    }
+
+    public String getApplySerialId() {
+        return applySerialId;
+    }
+
+    public void setApplySerialId(String applySerialId) {
+        this.applySerialId = applySerialId;
+    }
+
+    public String getEntrustId() {
+        return entrustId;
+    }
+
+    public void setEntrustId(String entrustId) {
+        this.entrustId = entrustId;
+    }
+
+    public String getTraderName() {
+        return traderName;
+    }
+
+    public void setTraderName(String traderName) {
+        this.traderName = traderName;
+    }
+
+    public String getBankChnl() {
+        return bankChnl;
+    }
+
+    public void setBankChnl(String bankChnl) {
+        this.bankChnl = bankChnl;
+    }
+
+    public String getBankCustomerId() {
+        return bankCustomerId;
+    }
+
+    public void setBankCustomerId(String bankCustomerId) {
+        this.bankCustomerId = bankCustomerId;
+    }
+
+    public String getBankChnlName() {
+        return bankChnlName;
+    }
+
+    public void setBankChnlName(String bankChnlName) {
+        this.bankChnlName = bankChnlName;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public String getBankAccountName() {
+        return bankAccountName;
+    }
+
+    public void setBankAccountName(String bankAccountName) {
+        this.bankAccountName = bankAccountName;
+    }
+
+    public String getFinanceName() {
+        return financeName;
+    }
+
+    public void setFinanceName(String financeName) {
+        this.financeName = financeName;
+    }
+
+    public String getFinanceIdType() {
+        return financeIdType;
+    }
+
+    public void setFinanceIdType(String financeIdType) {
+        this.financeIdType = financeIdType;
+    }
+
+    public String getFinanceIdNo() {
+        return financeIdNo;
+    }
+
+    public void setFinanceIdNo(String financeIdNo) {
+        this.financeIdNo = financeIdNo;
+    }
+
+    public String getFinanceExpStart() {
+        return financeExpStart;
+    }
+
+    public void setFinanceExpStart(String financeExpStart) {
+        this.financeExpStart = financeExpStart;
+    }
+
+    public String getFinanceExpEnd() {
+        return financeExpEnd;
+    }
+
+    public void setFinanceExpEnd(String financeExpEnd) {
+        this.financeExpEnd = financeExpEnd;
+    }
+
+    public String getFinanceMobile() {
+        return financeMobile;
+    }
+
+    public void setFinanceMobile(String financeMobile) {
+        this.financeMobile = financeMobile;
+    }
+
+    public String getComExpireStart() {
+        return comExpireStart;
+    }
+
+    public void setComExpireStart(String comExpireStart) {
+        this.comExpireStart = comExpireStart;
+    }
+
+    public String getLegalExpireStart() {
+        return legalExpireStart;
+    }
+
+    public void setLegalExpireStart(String legalExpireStart) {
+        this.legalExpireStart = legalExpireStart;
+    }
+
+    public String getBankContractFile() {
+        return bankContractFile;
+    }
+
+    public void setBankContractFile(String bankContractFile) {
+        this.bankContractFile = bankContractFile;
+    }
+
+    public String getAuthContractFile() {
+        return authContractFile;
+    }
+
+    public void setAuthContractFile(String authContractFile) {
+        this.authContractFile = authContractFile;
+    }
+
+    public String getRegisterJson() {
+        return registerJson;
+    }
+
+    public void setRegisterJson(String registerJson) {
+        this.registerJson = registerJson;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }

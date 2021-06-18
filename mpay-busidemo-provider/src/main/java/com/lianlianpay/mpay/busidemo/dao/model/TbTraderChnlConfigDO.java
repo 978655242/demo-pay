@@ -1,78 +1,158 @@
 package com.lianlianpay.mpay.busidemo.dao.model;
 
-import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
-@Data
-@Table(name = "TB_TRADER_CHNL_CONFIG")
+/**
+ * 商户渠道配置信息
+ */
 public class TbTraderChnlConfigDO {
     /**
      * 商户号
      */
-    @Id
-    @Column(name = "oid_partner")
     private String oidPartner;
 
     /**
      * 银行渠道编码
      */
-    @Id
-    @Column(name = "bank_chnl")
     private String bankChnl;
 
     /**
      * 银行客户编码
      */
-    @Column(name = "bank_customer_id")
     private String bankCustomerId;
 
     /**
      * 银行渠道名称
      */
-    @Column(name = "bank_chnl_name")
     private String bankChnlName;
 
     /**
      * 银行账号
      */
-    @Column(name = "bank_account")
     private String bankAccount;
 
     /**
      * 银行账户名称
      */
-    @Column(name = "bank_account_name")
     private String bankAccountName;
 
     /**
      * 银行协议地址
      */
-    @Column(name = "bank_contract_file")
     private String bankContractFile;
 
     /**
      * 合作协议地址
      */
-    @Column(name = "auth_contract_file")
     private String authContractFile;
 
     /**
      * 充值触发余额阈值
      */
-    @Column(name = "limit_balance")
     private Long limitBalance;
 
-    @Column(name = "single_max_recharge")
+    /**
+     * 单次充值限额
+     */
     private Long singleMaxRecharge;
 
-    @Column(name = "create_time")
     private Date createTime;
 
-    @Column(name = "update_time")
     private Date updateTime;
 
+    public String getOidPartner() {
+        return oidPartner;
+    }
+
+    public void setOidPartner(String oidPartner) {
+        this.oidPartner = oidPartner;
+    }
+
+    public String getBankChnl() {
+        return bankChnl;
+    }
+
+    public void setBankChnl(String bankChnl) {
+        this.bankChnl = bankChnl;
+    }
+
+    public String getBankCustomerId() {
+        return bankCustomerId;
+    }
+
+    public void setBankCustomerId(String bankCustomerId) {
+        this.bankCustomerId = bankCustomerId;
+    }
+
+    public String getBankChnlName() {
+        return bankChnlName;
+    }
+
+    public void setBankChnlName(String bankChnlName) {
+        this.bankChnlName = bankChnlName;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public String getBankAccountName() {
+        return bankAccountName;
+    }
+
+    public void setBankAccountName(String bankAccountName) {
+        this.bankAccountName = bankAccountName;
+    }
+
+    public String getBankContractFile() {
+        return bankContractFile;
+    }
+
+    public void setBankContractFile(String bankContractFile) {
+        this.bankContractFile = bankContractFile;
+    }
+
+    public String getAuthContractFile() {
+        return authContractFile;
+    }
+
+    public void setAuthContractFile(String authContractFile) {
+        this.authContractFile = authContractFile;
+    }
+
+    public Long getLimitBalance() {
+        return limitBalance;
+    }
+
+    public void setLimitBalance(Long limitBalance) {
+        this.limitBalance = limitBalance;
+    }
+
+    public Long getSingleMaxRecharge() {
+        return singleMaxRecharge;
+    }
+
+    public void setSingleMaxRecharge(Long singleMaxRecharge) {
+        this.singleMaxRecharge = singleMaxRecharge;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }
