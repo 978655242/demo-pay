@@ -39,7 +39,7 @@ public class TraderOpenApplyServiceImpl implements ITraderOpenApplyService {
     @Override
     public ResultModel<TraderOpenApplyResDto> getApplyInfo(TraderOpenApplyReqDto reqDto) {
         List<TbTraderOpenApplyDO> openApplyList =
-            openApplyRepository.selectAllByOidPartner(reqDto.getOidPartner(), "YL");
+            openApplyRepository.selectAllByOidPartner(reqDto.getOidPartner(), "03530000");
         if (isEmpty(openApplyList)) {
             log.info("{}未查询到开户申请记录", TraceUtil.getCorrelationID());
             throw new CommonBizException(BusiRetCodeEnum.TRADER_APPLY_NOT_EXIST);

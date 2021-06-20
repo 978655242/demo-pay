@@ -1,6 +1,5 @@
 package com.lianlianpay.mpay.busidemo.dao.repository;
 
-import com.lianlianpay.mpay.busidemo.dao.mapper.TbTraderChnlConfigDOMapper;
 import com.lianlianpay.mpay.busidemo.dao.mapper.TbTraderOpenApplyDOMapper;
 import com.lianlianpay.mpay.busidemo.dao.model.TbTraderOpenApplyDO;
 import com.lianlianpay.mpay.share.facade.IAesCryptFacade;
@@ -24,8 +23,7 @@ public class TbTraderOpenApplyRepository {
 
     @Resource
     private TbTraderOpenApplyDOMapper applyDOMapper;
-    @Resource
-    private TbTraderChnlConfigDOMapper chnlConfigDOMapper;
+
     @Autowired
     private IAesCryptFacade aesCryptFacade;
 

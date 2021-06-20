@@ -6,6 +6,7 @@
  */
 package com.lianlianpay.mpay.busidemo;
 
+import com.lianlianpay.mpay.share.facade.impl.AesCryptFacade;
 import com.llpay.framework.autoconfigure.AutoconfigPackage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
@@ -24,6 +26,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @SpringBootApplication(scanBasePackages = {"com.lianlianpay"}, exclude = {DataSourceAutoConfiguration.class},
     scanBasePackageClasses = {Application.class, AutoconfigPackage.class})
+@Import(AesCryptFacade.class)
 public class Application implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
