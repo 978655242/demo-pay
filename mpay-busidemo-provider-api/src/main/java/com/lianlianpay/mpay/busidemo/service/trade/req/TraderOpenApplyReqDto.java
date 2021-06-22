@@ -1,7 +1,10 @@
 package com.lianlianpay.mpay.busidemo.service.trade.req;
 
 import com.lianlianpay.mpay.common.parameter.BaseReqDTO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -11,6 +14,9 @@ import org.hibernate.validator.constraints.NotBlank;
  * @Date: 2019/6/15 13:48
  **/
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TraderOpenApplyReqDto extends BaseReqDTO  {
 
 	@NotBlank(message = "商户号不能为空")

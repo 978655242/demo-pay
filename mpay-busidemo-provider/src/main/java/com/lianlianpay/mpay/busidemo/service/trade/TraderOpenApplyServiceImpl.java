@@ -11,8 +11,9 @@ import com.lianlianpay.mpay.busidemo.enums.TraderOpenApplyStatusEnum;
 import com.lianlianpay.mpay.busidemo.service.trade.req.TraderOpenApplyReqDto;
 import com.lianlianpay.mpay.busidemo.service.trade.res.TraderOpenApplyResDto;
 import com.lianlianpay.mpay.busidemo.dao.repository.TbTraderOpenApplyRepository;
-import com.lianlianpay.mpay.share.annotation.Dubbo;
+import com.lianlianpay.mpay.share.facade.IAesCryptFacade;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.util.Strings;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,7 +36,9 @@ public class TraderOpenApplyServiceImpl implements ITraderOpenApplyService {
     @Autowired
     private TbTraderOpenApplyRepository openApplyRepository;
 
-    @Dubbo(name = "商户开户申请数据查询")
+    @Autowired
+    private IAesCryptFacade aesCryptFacade;
+
     @Override
     public ResultModel<TraderOpenApplyResDto> getApplyInfo(TraderOpenApplyReqDto reqDto) {
         List<TbTraderOpenApplyDO> openApplyList =
@@ -44,6 +47,10 @@ public class TraderOpenApplyServiceImpl implements ITraderOpenApplyService {
             log.info("{}未查询到开户申请记录", TraceUtil.getCorrelationID());
             throw new CommonBizException(BusiRetCodeEnum.TRADER_APPLY_NOT_EXIST);
         }
+        return filterTbTraderOpenApplyDOList(openApplyList);
+    }
+
+    private ResultModel<TraderOpenApplyResDto> filterTbTraderOpenApplyDOList(List<TbTraderOpenApplyDO> openApplyList) {
         List<TbTraderOpenApplyDO> successList = openApplyList.stream()
             .filter(x -> Objects.equals(x.getStatus(), TraderOpenApplyStatusEnum.INIT.getCode())
                 || Objects.equals(x.getStatus(), TraderOpenApplyStatusEnum.WAIT_REGISTER_REVIEW.getCode())
@@ -55,6 +62,7 @@ public class TraderOpenApplyServiceImpl implements ITraderOpenApplyService {
         if (!isEmpty(successList)) {
             TbTraderOpenApplyDO tbTraderOpenApply = openApplyList.get(0);
             TraderOpenApplyResDto resDto = new TraderOpenApplyResDto();
+            aesDecryptData(tbTraderOpenApply);
             BeanUtils.copyProperties(tbTraderOpenApply, resDto);
             return new ResultModel(resDto, CommonRetCodeEnum.TRANS_SUCCESS.getCode(),
                 CommonRetCodeEnum.TRANS_SUCCESS.getDesc());
@@ -74,5 +82,27 @@ public class TraderOpenApplyServiceImpl implements ITraderOpenApplyService {
         throw new CommonBizException(BusiRetCodeEnum.TRADER_APPLY_NOT_EXIST);
     }
 
+    private void aesDecryptData(TbTraderOpenApplyDO openApplyDO) {
+        if (openApplyDO == null) {
+            return;
+        }
+
+        if (!Strings.isNullOrEmpty(openApplyDO.getFinanceName())) {
+            openApplyDO.setFinanceName(aesCryptFacade.aesDecrypt(openApplyDO.getFinanceName()));
+        }
+
+        if (!Strings.isNullOrEmpty(openApplyDO.getFinanceMobile())) {
+            openApplyDO.setFinanceMobile(aesCryptFacade.aesDecrypt(openApplyDO.getFinanceMobile()));
+        }
+        if (!Strings.isNullOrEmpty(openApplyDO.getFinanceIdNo())) {
+            openApplyDO.setFinanceIdNo(aesCryptFacade.aesDecrypt(openApplyDO.getFinanceIdNo()));
+        }
+        if (!Strings.isNullOrEmpty(openApplyDO.getBankAccount())) {
+            openApplyDO.setBankAccount(aesCryptFacade.aesDecrypt(openApplyDO.getBankAccount()));
+        }
+        if (!Strings.isNullOrEmpty(openApplyDO.getRegisterJson())) {
+            openApplyDO.setRegisterJson(aesCryptFacade.aesDecrypt(openApplyDO.getRegisterJson()));
+        }
+    }
 
 }

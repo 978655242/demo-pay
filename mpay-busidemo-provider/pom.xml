@@ -71,9 +71,10 @@
                     <artifactId>mpay-common</artifactId>
                     <groupId>com.lianlianpay</groupId>
                 </exclusion>
+                <!-- 不用依赖排除例如mq和redis -->
                 <exclusion>
                     <groupId>com.lianpay</groupId>
-                    <artifactId>framework-web-starter</artifactId>
+                    <artifactId>framework-rocketmq-starter</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
