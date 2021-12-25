@@ -1,6 +1,6 @@
 package com.lianlianpay.mpay.busidemo.manager.strategy;
 
-import com.lianlianpay.mpay.busidemo.service.trade.req.MqRankTransReqDto;
+import com.lianlianpay.mpay.busidemo.dto.trade.MqRankTransReqDto;
 import com.lianlianpay.mpay.common.parameter.ResultModel;
 
 /**

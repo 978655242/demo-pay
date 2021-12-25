@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface TbTraderOpenApplyDOMapper {
+
     int deleteByPrimaryKey(String applyId);
 
     int insert(TbTraderOpenApplyDO record);

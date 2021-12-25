@@ -3,8 +3,8 @@ package com.lianlianpay.mpay.busidemo.service;
 
 import com.lianlianpay.mpay.busidemo.TestSupport;
 import com.lianlianpay.mpay.busidemo.service.trade.ITraderOpenApplyService;
-import com.lianlianpay.mpay.busidemo.service.trade.req.TraderOpenApplyReqDto;
-import com.lianlianpay.mpay.busidemo.service.trade.res.TraderOpenApplyResDto;
+import com.lianlianpay.mpay.busidemo.dto.trade.TraderOpenApplyReqDto;
+import com.lianlianpay.mpay.busidemo.dto.trade.TraderOpenApplyResDto;
 import com.lianlianpay.mpay.common.enums.CommonRetCodeEnum;
 import com.lianlianpay.mpay.common.parameter.ResultModel;
 import org.junit.Assert;

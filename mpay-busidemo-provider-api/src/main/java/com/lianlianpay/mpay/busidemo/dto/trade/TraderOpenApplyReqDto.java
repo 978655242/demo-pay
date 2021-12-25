@@ -1,4 +1,4 @@
-package com.lianlianpay.mpay.busidemo.service.trade.req;
+package com.lianlianpay.mpay.busidemo.dto.trade;
 
 import com.lianlianpay.mpay.common.parameter.BaseReqDTO;
 import lombok.AllArgsConstructor;

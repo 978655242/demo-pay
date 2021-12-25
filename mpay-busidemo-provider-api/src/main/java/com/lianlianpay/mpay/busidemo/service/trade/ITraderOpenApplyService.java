@@ -1,7 +1,7 @@
 package com.lianlianpay.mpay.busidemo.service.trade;
 
-import com.lianlianpay.mpay.busidemo.service.trade.res.TraderOpenApplyResDto;
-import com.lianlianpay.mpay.busidemo.service.trade.req.TraderOpenApplyReqDto;
+import com.lianlianpay.mpay.busidemo.dto.trade.TraderOpenApplyResDto;
+import com.lianlianpay.mpay.busidemo.dto.trade.TraderOpenApplyReqDto;
 import com.lianlianpay.mpay.common.parameter.ResultModel;
 
 /**

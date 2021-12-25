@@ -1,4 +1,4 @@
-package com.lianlianpay.mpay.busidemo.service.trade.res;
+package com.lianlianpay.mpay.busidemo.dto.trade;
 
 import lombok.Data;
 
