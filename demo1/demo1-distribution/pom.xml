@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.tups</groupId>
+    <artifactId>demo1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>demo1-distribution</artifactId>
+  <packaging>pom</packaging>
+  <name>demo1-distribution</name>
+  
+  <dependencies>
+		<!-- 应用依赖 -->
+		<dependency>
+			<groupId>com.tups</groupId>
+			<artifactId>demo1-starter</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
+	<profiles>
+		<profile>
+			<!-- 本地环境 -->
+			<id>DEVELOP</id>
+			<properties>
+				<profiles.active>DEVELOP</profiles.active>
+			</properties>
+
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>TEST</id>
+			<properties>
+				<profiles.active>TEST</profiles.active>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- UAT环境 -->
+			<id>UAT</id>
+			<properties>
+				<profiles.active>UAT</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>PRODUCT-SZ</id>
+			<properties>
+				<profiles.active>PRODUCT-SZ</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>PRODUCT-HZ</id>
+			<properties>
+				<profiles.active>PRODUCT-HZ</profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+	
+	<build>
+		<finalName>mpay-busidemo</finalName>
+		<resources>
+			<resource>
+				<!-- 使用指定环境的资源目录 -->
+				<directory>src/main/resources/${profiles.active}</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>release-all</id>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<descriptors>
+								<descriptor>release.xml</descriptor>
+							</descriptors>
+							<appendAssemblyId>true</appendAssemblyId>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

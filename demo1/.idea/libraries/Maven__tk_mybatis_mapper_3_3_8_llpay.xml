@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: tk.mybatis:mapper:3.3.8_llpay">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/repository/tk/mybatis/mapper/3.3.8_llpay/mapper-3.3.8_llpay.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/repository/tk/mybatis/mapper/3.3.8_llpay/mapper-3.3.8_llpay-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/repository/tk/mybatis/mapper/3.3.8_llpay/mapper-3.3.8_llpay-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
