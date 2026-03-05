@@ -11,16 +11,16 @@
     </parent>
 
     <groupId>com.lianlianpay</groupId>
-    <artifactId>mpay-busidemo</artifactId>
+    <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>mpay-busidemo</name>
+    <name>demo</name>
 
     <modules>
-        <module>mpay-busidemo-starter</module>
-        <module>mpay-busidemo-provider-api</module>
-        <module>mpay-busidemo-provider</module>
-        <module>mpay-busidemo-distribution</module>
+        <module>demo-starter</module>
+        <module>demo-provider-api</module>
+        <module>demo-provider</module>
+        <module>demo-distribution</module>
     </modules>
 
     <dependencyManagement>

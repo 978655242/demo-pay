@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lianlianpay.demo.dao.mapper.TbTraderOpenApplyDOMapper">
+  <resultMap id="BaseResultMap" type="com.lianlianpay.demo.dao.model.TbTraderOpenApplyDO">
+    <!--@mbg.generated-->
+    <!--@Table TB_TRADER_OPEN_APPLY-->
+    <id column="apply_id" jdbcType="VARCHAR" property="applyId" />
+    <result column="oid_partner" jdbcType="VARCHAR" property="oidPartner" />
+    <result column="apply_serial_id" jdbcType="VARCHAR" property="applySerialId" />
+    <result column="entrust_id" jdbcType="VARCHAR" property="entrustId" />
+    <result column="trader_name" jdbcType="VARCHAR" property="traderName" />
+    <result column="bank_chnl" jdbcType="VARCHAR" property="bankChnl" />
+    <result column="bank_customer_id" jdbcType="VARCHAR" property="bankCustomerId" />
+    <result column="bank_chnl_name" jdbcType="VARCHAR" property="bankChnlName" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+    <result column="finance_name" jdbcType="VARCHAR" property="financeName" />
+    <result column="finance_id_type" jdbcType="VARCHAR" property="financeIdType" />
+    <result column="finance_id_no" jdbcType="VARCHAR" property="financeIdNo" />
+    <result column="finance_exp_start" jdbcType="VARCHAR" property="financeExpStart" />
+    <result column="finance_exp_end" jdbcType="VARCHAR" property="financeExpEnd" />
+    <result column="finance_mobile" jdbcType="VARCHAR" property="financeMobile" />
+    <result column="com_expire_start" jdbcType="VARCHAR" property="comExpireStart" />
+    <result column="legal_expire_start" jdbcType="VARCHAR" property="legalExpireStart" />
+    <result column="bank_contract_file" jdbcType="VARCHAR" property="bankContractFile" />
+    <result column="auth_contract_file" jdbcType="VARCHAR" property="authContractFile" />
+    <result column="register_json" jdbcType="LONGVARCHAR" property="registerJson" />
+    <result column="ext" jdbcType="LONGVARCHAR" property="ext" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    apply_id, oid_partner, apply_serial_id, entrust_id, trader_name, bank_chnl, bank_customer_id, 
+    bank_chnl_name, bank_account, bank_account_name, finance_name, finance_id_type, finance_id_no, 
+    finance_exp_start, finance_exp_end, finance_mobile, com_expire_start, legal_expire_start, 
+    bank_contract_file, auth_contract_file, register_json, ext, remark, `status`, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TRADER_OPEN_APPLY
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from TB_TRADER_OPEN_APPLY
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lianlianpay.demo.dao.model.TbTraderOpenApplyDO">
+    <!--@mbg.generated-->
+    insert into TB_TRADER_OPEN_APPLY (apply_id, oid_partner, apply_serial_id, 
+      entrust_id, trader_name, bank_chnl, 
+      bank_customer_id, bank_chnl_name, bank_account, 
+      bank_account_name, finance_name, finance_id_type, 
+      finance_id_no, finance_exp_start, finance_exp_end, 
+      finance_mobile, com_expire_start, legal_expire_start, 
+      bank_contract_file, auth_contract_file, register_json, 
+      ext, remark, `status`, 
+      create_time, update_time)
+    values (#{applyId,jdbcType=VARCHAR}, #{oidPartner,jdbcType=VARCHAR}, #{applySerialId,jdbcType=VARCHAR}, 
+      #{entrustId,jdbcType=VARCHAR}, #{traderName,jdbcType=VARCHAR}, #{bankChnl,jdbcType=VARCHAR}, 
+      #{bankCustomerId,jdbcType=VARCHAR}, #{bankChnlName,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, 
+      #{bankAccountName,jdbcType=VARCHAR}, #{financeName,jdbcType=VARCHAR}, #{financeIdType,jdbcType=VARCHAR}, 
+      #{financeIdNo,jdbcType=VARCHAR}, #{financeExpStart,jdbcType=VARCHAR}, #{financeExpEnd,jdbcType=VARCHAR}, 
+      #{financeMobile,jdbcType=VARCHAR}, #{comExpireStart,jdbcType=VARCHAR}, #{legalExpireStart,jdbcType=VARCHAR}, 
+      #{bankContractFile,jdbcType=VARCHAR}, #{authContractFile,jdbcType=VARCHAR}, #{registerJson,jdbcType=LONGVARCHAR}, 
+      #{ext,jdbcType=LONGVARCHAR}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lianlianpay.demo.dao.model.TbTraderOpenApplyDO">
+    <!--@mbg.generated-->
+    insert into TB_TRADER_OPEN_APPLY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="applyId != null">
+        apply_id,
+      </if>
+      <if test="oidPartner != null">
+        oid_partner,
+      </if>
+      <if test="applySerialId != null">
+        apply_serial_id,
+      </if>
+      <if test="entrustId != null">
+        entrust_id,
+      </if>
+      <if test="traderName != null">
+        trader_name,
+      </if>
+      <if test="bankChnl != null">
+        bank_chnl,
+      </if>
+      <if test="bankCustomerId != null">
+        bank_customer_id,
+      </if>
+      <if test="bankChnlName != null">
+        bank_chnl_name,
+      </if>
+      <if test="bankAccount != null">
+        bank_account,
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name,
+      </if>
+      <if test="financeName != null">
+        finance_name,
+      </if>
+      <if test="financeIdType != null">
+        finance_id_type,
+      </if>
+      <if test="financeIdNo != null">
+        finance_id_no,
+      </if>
+      <if test="financeExpStart != null">
+        finance_exp_start,
+      </if>
+      <if test="financeExpEnd != null">
+        finance_exp_end,
+      </if>
+      <if test="financeMobile != null">
+        finance_mobile,
+      </if>
+      <if test="comExpireStart != null">
+        com_expire_start,
+      </if>
+      <if test="legalExpireStart != null">
+        legal_expire_start,
+      </if>
+      <if test="bankContractFile != null">
+        bank_contract_file,
+      </if>
+      <if test="authContractFile != null">
+        auth_contract_file,
+      </if>
+      <if test="registerJson != null">
+        register_json,
+      </if>
+      <if test="ext != null">
+        ext,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="applyId != null">
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="oidPartner != null">
+        #{oidPartner,jdbcType=VARCHAR},
+      </if>
+      <if test="applySerialId != null">
+        #{applySerialId,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustId != null">
+        #{entrustId,jdbcType=VARCHAR},
+      </if>
+      <if test="traderName != null">
+        #{traderName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankChnl != null">
+        #{bankChnl,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCustomerId != null">
+        #{bankCustomerId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankChnlName != null">
+        #{bankChnlName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="financeName != null">
+        #{financeName,jdbcType=VARCHAR},
+      </if>
+      <if test="financeIdType != null">
+        #{financeIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="financeIdNo != null">
+        #{financeIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeExpStart != null">
+        #{financeExpStart,jdbcType=VARCHAR},
+      </if>
+      <if test="financeExpEnd != null">
+        #{financeExpEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="financeMobile != null">
+        #{financeMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="comExpireStart != null">
+        #{comExpireStart,jdbcType=VARCHAR},
+      </if>
+      <if test="legalExpireStart != null">
+        #{legalExpireStart,jdbcType=VARCHAR},
+      </if>
+      <if test="bankContractFile != null">
+        #{bankContractFile,jdbcType=VARCHAR},
+      </if>
+      <if test="authContractFile != null">
+        #{authContractFile,jdbcType=VARCHAR},
+      </if>
+      <if test="registerJson != null">
+        #{registerJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ext != null">
+        #{ext,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lianlianpay.demo.dao.model.TbTraderOpenApplyDO">
+    <!--@mbg.generated-->
+    update TB_TRADER_OPEN_APPLY
+    <set>
+      <if test="oidPartner != null">
+        oid_partner = #{oidPartner,jdbcType=VARCHAR},
+      </if>
+      <if test="applySerialId != null">
+        apply_serial_id = #{applySerialId,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustId != null">
+        entrust_id = #{entrustId,jdbcType=VARCHAR},
+      </if>
+      <if test="traderName != null">
+        trader_name = #{traderName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankChnl != null">
+        bank_chnl = #{bankChnl,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCustomerId != null">
+        bank_customer_id = #{bankCustomerId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankChnlName != null">
+        bank_chnl_name = #{bankChnlName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="financeName != null">
+        finance_name = #{financeName,jdbcType=VARCHAR},
+      </if>
+      <if test="financeIdType != null">
+        finance_id_type = #{financeIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="financeIdNo != null">
+        finance_id_no = #{financeIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeExpStart != null">
+        finance_exp_start = #{financeExpStart,jdbcType=VARCHAR},
+      </if>
+      <if test="financeExpEnd != null">
+        finance_exp_end = #{financeExpEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="financeMobile != null">
+        finance_mobile = #{financeMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="comExpireStart != null">
+        com_expire_start = #{comExpireStart,jdbcType=VARCHAR},
+      </if>
+      <if test="legalExpireStart != null">
+        legal_expire_start = #{legalExpireStart,jdbcType=VARCHAR},
+      </if>
+      <if test="bankContractFile != null">
+        bank_contract_file = #{bankContractFile,jdbcType=VARCHAR},
+      </if>
+      <if test="authContractFile != null">
+        auth_contract_file = #{authContractFile,jdbcType=VARCHAR},
+      </if>
+      <if test="registerJson != null">
+        register_json = #{registerJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ext != null">
+        ext = #{ext,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lianlianpay.demo.dao.model.TbTraderOpenApplyDO">
+    <!--@mbg.generated-->
+    update TB_TRADER_OPEN_APPLY
+    set oid_partner = #{oidPartner,jdbcType=VARCHAR},
+      apply_serial_id = #{applySerialId,jdbcType=VARCHAR},
+      entrust_id = #{entrustId,jdbcType=VARCHAR},
+      trader_name = #{traderName,jdbcType=VARCHAR},
+      bank_chnl = #{bankChnl,jdbcType=VARCHAR},
+      bank_customer_id = #{bankCustomerId,jdbcType=VARCHAR},
+      bank_chnl_name = #{bankChnlName,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+      finance_name = #{financeName,jdbcType=VARCHAR},
+      finance_id_type = #{financeIdType,jdbcType=VARCHAR},
+      finance_id_no = #{financeIdNo,jdbcType=VARCHAR},
+      finance_exp_start = #{financeExpStart,jdbcType=VARCHAR},
+      finance_exp_end = #{financeExpEnd,jdbcType=VARCHAR},
+      finance_mobile = #{financeMobile,jdbcType=VARCHAR},
+      com_expire_start = #{comExpireStart,jdbcType=VARCHAR},
+      legal_expire_start = #{legalExpireStart,jdbcType=VARCHAR},
+      bank_contract_file = #{bankContractFile,jdbcType=VARCHAR},
+      auth_contract_file = #{authContractFile,jdbcType=VARCHAR},
+      register_json = #{registerJson,jdbcType=LONGVARCHAR},
+      ext = #{ext,jdbcType=LONGVARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllByOidPartner" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TB_TRADER_OPEN_APPLY
+    where oid_partner = #{oidPartner,jdbcType=VARCHAR}
+    and bank_chnl = #{bankChnl,jdbcType=VARCHAR}
+  </select>
+</mapper>
