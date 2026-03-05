@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.lianlianpay</groupId>
+        <artifactId>mpay-busidemo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>mpay-busidemo-provider</artifactId>
+    <name>mpay-busidemo-provider</name>
+
+    <dependencies>
+        <!-- framework dependency readDataLine -->
+        <dependency>
+            <groupId>com.lianpay</groupId>
+            <artifactId>framework-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lianpay</groupId>
+            <artifactId>framework-apollo-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lianpay</groupId>
+            <artifactId>framework-dubbo-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lianpay</groupId>
+            <artifactId>framework-logging-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lianpay</groupId>
+            <artifactId>framework-jdbc-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lianpay</groupId>
+            <artifactId>framework-jdbc-starter</artifactId>
+        </dependency>
+        <!-- framework dependency end -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- module dependency readDataLine -->
+        <dependency>
+            <groupId>com.lianlianpay</groupId>
+            <artifactId>mpay-busidemo-provider-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- third dependency readDataLine -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
+        <!-- SFTP使用的第三方依赖 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>4.5.6</version>
+            <!--<scope>test</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>com.lianlianpay</groupId>
+            <artifactId>mpay-share</artifactId>
+            <version>0.0.5-SNAPSHOT</version>
+            <exclusions>
+                <!-- 不用依赖排除例如mq和redis -->
+                <exclusion>
+                    <groupId>com.lianpay</groupId>
+                    <artifactId>framework-rocketmq-starter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.lianpay</groupId>
+                    <artifactId>framework-reids-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+</project>
